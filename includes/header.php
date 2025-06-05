@@ -16,6 +16,6 @@ require_once __DIR__ . '/../config/config.php';
   <nav class="space-x-4">
     <a href="/pages/user/dashboard.php" class="text-gray-700 hover:text-blue-600">apatah</a>
     <a href="/pages/user/tasks.php" class="text-gray-700 hover:text-blue-600">Tugas</a>
-    <a href="/logout.php" class="text-red-500 hover:text-red-700 font-medium">Logout</a>
+    <a href="/taskora/pages/auth/logout.php" class="text-red-500 hover:text-red-700 font-medium">Logout</a>
   </nav>
 </header>
