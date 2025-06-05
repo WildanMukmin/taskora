@@ -1,4 +1,7 @@
-<?php include_once('../../includes/header.php'); ?>
+<?php 
+$title_page = 'Dashboard admin';
+include_once('../../includes/header.php'); 
+?>
 
 <div>dashboard admin</div>
 
