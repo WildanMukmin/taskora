@@ -1,11 +1,11 @@
 <?php
-// session_start(); // jika belum dipanggil sebelumnya
+require_once __DIR__ . '/../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $title_page ?? 'Taskora' ?></title>
+  <title><?= $page_title ?? 'Management Task'; ?> - Taskora</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -19,5 +19,3 @@
     <a href="/logout.php" class="text-red-500 hover:text-red-700 font-medium">Logout</a>
   </nav>
 </header>
-
-<main class="flex-1 p-6">
