@@ -1,41 +1,44 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 
-function getMembers(){
+function getUsers(){
     global $conn;
-    $sql = "SELECT * FROM anggota";
+    $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
-    return $result;
+
+    // return semua data sebagai array asosiatif
+    return $result ? $result->fetch_all(MYSQLI_ASSOC) : false;
 }
 
-function getMember($member_id) {
+function getUser($user_id) {
     global $conn;
-    $sql = "SELECT * FROM anggota WHERE id = $member_id";
+    $user_id = (int)$user_id;
+    $sql = "SELECT * FROM users WHERE id = $user_id";
     $result = $conn->query($sql);
-    return $result->fetch_assoc();
+    return $result ? $result->fetch_assoc() : false;
 }
 
-function getTotalMembers() {
+function getTotalUsers() {
     global $conn;
-    $sql = "SELECT COUNT(id) as total FROM anggota";
+    $sql = "SELECT COUNT(id) as total FROM users";
     $result = $conn->query($sql);
-    if ($result) {
-        return $result->fetch_assoc()['total'];
-    }
-    return 0;
+    return $result ? $result->fetch_assoc()['total'] : 0;
 }
 
-function addMember($nama, $email, $password, $nomor, $alamat) {
+function addUser($name, $email, $password) {
     global $conn;
-    // Validasi data tidak kosong (opsional tambahan)
-    if (empty($nama) || empty($email) || empty($_POST['password']) || empty($nomor) || empty($alamat)) {
+
+    // Validasi sederhana
+    if (empty($name) || empty($email) || empty($password)) {
         $_SESSION['error'] = "Semua field wajib diisi.";
         $_SESSION['error_time'] = time();
         header("Location: list.php");
         exit;
     }
 
-    $checkQuery = "SELECT * FROM anggota WHERE email = '$email'";
+    // Cek apakah email sudah ada
+    $email = mysqli_real_escape_string($conn, $email);
+    $checkQuery = "SELECT id FROM users WHERE email = '$email'";
     $checkResult = mysqli_query($conn, $checkQuery);
 
     if ($checkResult && mysqli_num_rows($checkResult) > 0) {
@@ -45,11 +48,15 @@ function addMember($nama, $email, $password, $nomor, $alamat) {
         exit;
     }
 
-    $insertQuery = "INSERT INTO anggota (nama, email, password, nomor, alamat) 
-                    VALUES ('$nama', '$email', '$password', '$nomor', '$alamat')";
+    // Enkripsi password (sangat penting!)
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $name = mysqli_real_escape_string($conn, $name);
+
+    $insertQuery = "INSERT INTO users (name, email, password) 
+                    VALUES ('$name', '$email', '$hashedPassword')";
 
     if (mysqli_query($conn, $insertQuery)) {
-        $_SESSION['success'] = "Anggota berhasil ditambahkan.";
+        $_SESSION['success'] = "User berhasil ditambahkan.";
         $_SESSION['success_time'] = time();
         header("Location: list.php");
         exit;
@@ -61,26 +68,22 @@ function addMember($nama, $email, $password, $nomor, $alamat) {
     }
 }
 
-function updateMember($id, $nama, $alamat, $nomor) {
+function updateUser($id, $name, $email) {
     global $conn;
-    $nama= mysqli_real_escape_string($conn, $nama);
-    $alamat= mysqli_real_escape_string($conn, $alamat);
-    $nomor= mysqli_real_escape_string($conn, $nomor);
-    $id= (int)$id;
 
-    $sql = "UPDATE anggota SET nama = '$nama', alamat = '$alamat', nomor = '$nomor' WHERE id = $id";
+    $id = (int)$id;
+    $name = mysqli_real_escape_string($conn, $name);
+    $email = mysqli_real_escape_string($conn, $email);
 
-    if ($conn->query($sql) === TRUE) {
-        return true;
-    } else {
-        return false;
-    }
+    $sql = "UPDATE users SET name = '$name', email = '$email' WHERE id = $id";
+
+    return $conn->query($sql);
 }
 
-function deleteMember($id) {
+function deleteUser($id) {
     global $conn;
-    $sql = "DELETE FROM anggota WHERE id = $id";
-        return $conn->query($sql);
+    $id = (int)$id;
+    $sql = "DELETE FROM users WHERE id = $id";
+    return $conn->query($sql);
 }
-
 ?>
