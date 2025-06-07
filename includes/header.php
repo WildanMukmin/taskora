@@ -31,7 +31,7 @@ require_once __DIR__ . '/../config/config.php';
       </svg>
       Manage User
     </a>
-    <a href="/taskora/pages/admin/tasks.php" class="flex items-center px-3 py-2 text-gray-700 hover:text-yellow-600 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
+    <a href="/taskora/pages/admin/add_task.php" class="flex items-center px-3 py-2 text-gray-700 hover:text-yellow-600 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
       </svg>
