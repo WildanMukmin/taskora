@@ -38,7 +38,7 @@ include_once('../../functions/users.php');
         </div>
         
         <div class="flex justify-end mt-6 space-x-4">
-          <button type="button" onclick="window.location.href='manage.php'" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button type="button" onclick="window.location.href='List.php'" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Back
           </button>
           <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
