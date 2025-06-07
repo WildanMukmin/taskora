@@ -7,7 +7,7 @@ include_once('../../functions/users.php')
 <main class="flex-grow p-4">
   <div class="grid grid-cols-1 gap-6 mb-8">
     <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-xl font-bold text-blue-600 mb-2">WELCOME BACK, Admin</h2>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">WELCOME BACK, ADMIN</h2>
       <p class="text-gray-600">Here's what's happening with your task management platform today!</p>
     </div>
   </div>

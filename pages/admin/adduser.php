@@ -1,4 +1,15 @@
 <?php
+include_once('../../functions/users.php');
+
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  addUser($name, $email, $password);
+}
+
+?>
+<?php
 $title_page = 'Add Users Account';
 include_once('../../includes/header.php');
 include_once('../../functions/users.php');

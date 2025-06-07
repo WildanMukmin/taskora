@@ -1,4 +1,17 @@
 <?php
+include_once('../../functions/users.php');
+$userID = $_GET['id'];
+$userEdit = getUser($userID);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  updateUser($userID, $name, $email);
+  header("Location: list.php");
+}
+
+?>
+<?php
 $title_page = 'Edit Users Account';
 include_once('../../includes/header.php');
 include_once('../../functions/users.php');
@@ -20,12 +33,12 @@ include_once('../../functions/users.php');
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="mb-4">
             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
-            <input type="text" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            <input type="text" value="<?= $userEdit['name']?>" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
           </div>
           
           <div class="mb-4">
             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input type="email" name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            <input type="email" value="<?= $userEdit['email']?>"name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
           </div>
       
           <div class="mb-4">
