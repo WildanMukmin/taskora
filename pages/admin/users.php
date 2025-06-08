@@ -2,6 +2,7 @@
 $title_page = 'Manage Users Account';
 include_once('../../includes/header.php');
 include_once('../../functions/users.php');
+$total_users = getTotalUsers();
 ?>
 
 <main class="flex-grow p-4">
@@ -14,15 +15,13 @@ include_once('../../functions/users.php');
         <h1 class="text-xl font-bold text-blue-600">Manage Users</h1>
       </div>
       
-      <button 
-        type="button" 
-        onclick="window.location.href='adduser.php'" 
+      <a href="/taskora/pages/admin/add_user.php"
         class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 shadow-sm hover:shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
         </svg>
         <span>Add User</span>
-      </button>
+      </a>
     </div>
   </div>  
 
@@ -35,15 +34,27 @@ include_once('../../functions/users.php');
         <h3 class="text-lg font-semibold text-gray-700">Total Users</h3>
       </div>
       <p class="text-3xl font-bold text-blue-600 mb-1">
-        <?php 
-        echo getTotalUsers();
-        ?>
+        <?= $total_users; ?>
       </p>
       <p class="text-sm text-gray-500">All registered users</p>
     </div>
   </div>
 
   <div class="bg-white rounded-lg shadow-md overflow-hidden">
+<?php if (isset($_SESSION['error'])): ?>
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+    <?= $_SESSION['error']; ?>
+    <?php unset($_SESSION['error']); ?>
+  </div>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['success'])): ?>
+  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4">
+    <?= $_SESSION['success']; ?>
+    <?php unset($_SESSION['success']); ?>
+  </div>
+<?php endif; ?>
+
     <table class="min-w-full divide-y divide-white">
       <thead class="bg-white">
         <tr>

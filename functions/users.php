@@ -32,7 +32,7 @@ function addUser($name, $email, $password) {
     if (empty($name) || empty($email) || empty($password)) {
         $_SESSION['error'] = "Semua field wajib diisi.";
         $_SESSION['error_time'] = time();
-        header("Location: list.php");
+        header("Location: add_user.php");
         exit;
     }
 
@@ -44,7 +44,7 @@ function addUser($name, $email, $password) {
     if ($checkResult && mysqli_num_rows($checkResult) > 0) {
         $_SESSION['error'] = "Email sudah terdaftar.";
         $_SESSION['error_time'] = time();
-        header("Location: list.php");
+        header("Location: add_user.php");
         exit;
     }
 
@@ -58,12 +58,12 @@ function addUser($name, $email, $password) {
     if (mysqli_query($conn, $insertQuery)) {
         $_SESSION['success'] = "User berhasil ditambahkan.";
         $_SESSION['success_time'] = time();
-        header("Location: list.php");
+        header("Location: add_user.php");
         exit;
     } else {
         $_SESSION['error'] = "Terjadi kesalahan saat menyimpan data.";
         $_SESSION['error_time'] = time();
-        header("Location: list.php");
+        header("Location: add_user.php");
         exit;
     }
 }
