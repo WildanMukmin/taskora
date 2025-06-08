@@ -77,7 +77,17 @@ function updateUser($id, $name, $email) {
 
     $sql = "UPDATE users SET name = '$name', email = '$email' WHERE id = $id";
 
-    return $conn->query($sql);
+    $result =  $conn->query($sql);
+    if($result){
+        $_SESSION["success"] = "User berhasil diupdate.";   
+        $_SESSION["success_time"] = time(); 
+    }
+    else {
+        $_SESSION["error"] = "User gagal diupdate.";   
+        $_SESSION["error_time"] = time(); 
+    }
+    header("Location: users.php");
+    exit;
 }
 
 function deleteUser($id) {
