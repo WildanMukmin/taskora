@@ -1,12 +1,45 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 
+
 function getTasks(){
     global $conn;
-    $sql = "SELECT * FROM tasks";
+
+    $sql = "
+        SELECT 
+            tasks.*,
+            users.name AS user_name,
+            users.email AS user_email,
+            categories.name AS category_name
+        FROM tasks
+        JOIN users ON tasks.user_id = users.id
+        LEFT JOIN categories ON tasks.category_id = categories.id
+        ORDER BY tasks.created_at DESC
+    ";
+
     $result = $conn->query($sql);
 
-    // return semua data sebagai array asosiatif
+    return $result ? $result->fetch_all(MYSQLI_ASSOC) : false;
+}
+
+function getTasksById(){
+    global $conn;
+
+    $sql = "
+        SELECT 
+            tasks.*,
+            users.name AS user_name,
+            users.email AS user_email,
+            categories.name AS category_name
+        FROM tasks
+        JOIN users ON tasks.user_id = users.id
+        LEFT JOIN categories ON tasks.category_id = categories.id
+        WHERE tasks.user_id = ?
+        ORDER BY tasks.created_at DESC
+    ";
+
+    $result = $conn->query($sql);
+
     return $result ? $result->fetch_all(MYSQLI_ASSOC) : false;
 }
 

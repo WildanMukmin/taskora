@@ -2,6 +2,23 @@
 $title_page = 'Manage Task Users Account';
 include_once('../../includes/header.php');
 include_once('../../functions/users.php');
+include_once('../../functions/tasks.php');
+$tasks = getTasks();
+$total_tasks = 0;
+$total_tasks_progress = 0;
+$total_tasks_done = 0;
+
+if ($tasks) {
+  foreach ($tasks as $task) {
+    if ($task['status'] === 'progress') {
+      $total_tasks_progress++;
+    } elseif ($task['status'] === 'done') {
+      $total_tasks_done++;
+    }
+    $total_tasks++;
+  }
+}
+
 ?>
 
 <main class="flex-grow p-4">
@@ -14,7 +31,7 @@ include_once('../../functions/users.php');
         <h1 class="text-xl font-bold text-blue-600">Task Users</h1>
       </div>
     </div>
-  </div>  
+  </div>
 
   <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
     <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
@@ -25,7 +42,7 @@ include_once('../../functions/users.php');
         <h3 class="text-lg font-semibold text-gray-700">Total Task</h3>
       </div>
       <p class="text-3xl font-bold text-blue-600 mb-1">
-        0
+        <?= $total_tasks; ?>
       </p>
       <p class="text-sm text-gray-500">All task users</p>
     </div>
@@ -38,9 +55,9 @@ include_once('../../functions/users.php');
         <h3 class="text-lg font-semibold text-gray-700">Total Progress</h3>
       </div>
       <p class="text-3xl font-bold text-blue-600 mb-1">
-        0
+        <?= $total_tasks_progress; ?>
       </p>
-      <p class="text-sm text-gray-500">All  progress task users</p>
+      <p class="text-sm text-gray-500">All progress task users</p>
     </div>
 
     <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
@@ -51,7 +68,7 @@ include_once('../../functions/users.php');
         <h3 class="text-lg font-semibold text-gray-700">Total Done</h3>
       </div>
       <p class="text-3xl font-bold text-blue-600 mb-1">
-        0
+        <?= $total_tasks_done; ?>
       </p>
       <p class="text-sm text-gray-500">All done</p>
     </div>
@@ -71,16 +88,32 @@ include_once('../../functions/users.php');
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['id'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">['name'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['category_id'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['title'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['status'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['created_at'] </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">['update_at'] </td>
-        </tr>
+        <?php if ($tasks && count($tasks) > 0): ?>
+          <?php foreach ($tasks as $task): ?>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['id']; ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($task['user_name']); ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($task['category_name'] ?? '-'); ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($task['title']); ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <span class="inline-block px-2 py-1 text-xs font-semibold rounded 
+            <?= $task['status'] === 'done' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'; ?>">
+                  <?= ucfirst($task['status']); ?>
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['created_at']; ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['updated_at']; ?></td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <tr>
+            <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
+              No tasks found.
+            </td>
+          </tr>
+        <?php endif; ?>
       </tbody>
+
     </table>
   </div>
 </main>
