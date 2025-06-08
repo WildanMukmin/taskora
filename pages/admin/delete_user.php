@@ -14,10 +14,10 @@ if (isset($_GET['id'])) {
         $_SESSION['error_time'] = time();
     }
     
-    header("Location: list.php");
+    header("Location: users.php");
     exit;
 } else {
-    header("Location: list.php");
+    header("Location: users.php");
     exit;
 }
 ?>

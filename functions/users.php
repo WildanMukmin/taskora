@@ -58,7 +58,7 @@ function addUser($name, $email, $password) {
     if (mysqli_query($conn, $insertQuery)) {
         $_SESSION['success'] = "User berhasil ditambahkan.";
         $_SESSION['success_time'] = time();
-        header("Location: add_user.php");
+        header("Location: users.php");
         exit;
     } else {
         $_SESSION['error'] = "Terjadi kesalahan saat menyimpan data.";
