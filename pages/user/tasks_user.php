@@ -1,27 +1,27 @@
 <?php
-$title_page = 'Dashboard User';
-include_once('../../includes/header.php');
-include_once('../../includes/gate_user.php');
-include_once('../../functions/tasks.php');
-include_once('../../functions/categories.php');
+$title_page = 'My Tasks';
+require_once('../../includes/header.php');
+require_once('../../includes/gate_user.php');
+require_once('../../functions/tasks.php');
+require_once('../../functions/categories.php');
 
-// Get user tasks and categories
-$tasks = getTasksById($user_id);
-// $categories = getCategories();
-$total_tasks = count($tasks);
+// Get only the current user's tasks
+$tasks = getTasksById();
+//$categories = getCategories();
 
 // Calculate task statistics
-$total_done = 0;
+$total_tasks = count($tasks);
 $total_progress = 0;
+$total_done = 0;
 $total_high = 0;
 $total_medium = 0;
 $total_low = 0;
 
 foreach ($tasks as $task) {
-    if ($task['status'] === 'done') {
-        $total_done++;
-    } else {
+    if ($task['status'] === 'progress') {
         $total_progress++;
+    } elseif ($task['status'] === 'done') {
+        $total_done++;
     }
     
     // Count by priority
@@ -48,11 +48,11 @@ $filtered_tasks = array_filter($tasks, function($task) use ($filter_status, $fil
 ?>
 
 <main class="flex-grow p-4 md:p-6 bg-gray-50">
-    <!-- Welcome Section -->
-    <div class="mb-8">
+    <!-- Header Section -->
+    <div class="mb-6">
         <div class="bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row items-start md:items-center justify-between">
             <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-indigo-600 mb-2">Welcome back, <?= htmlspecialchars($username) ?>!</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-indigo-600 mb-2">My Tasks</h1>
                 <p class="text-gray-600">You have <?= $total_tasks ?> tasks in your list</p>
             </div>
             <a href="add_task.php" class="mt-4 md:mt-0 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-md transition flex items-center">
@@ -125,7 +125,7 @@ $filtered_tasks = array_filter($tasks, function($task) use ($filter_status, $fil
                     Apply Filters
                 </button>
                 <?php if ($filter_status !== 'all' || $filter_category !== 'all' || $filter_priority !== 'all'): ?>
-                    <a href="dashboard.php" class="ml-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+                    <a href="tasks.php" class="ml-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
                         Clear
                     </a>
                 <?php endif; ?>
@@ -273,4 +273,4 @@ $filtered_tasks = array_filter($tasks, function($task) use ($filter_status, $fil
     </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once('../../includes/footer.php'); ?>
