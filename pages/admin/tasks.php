@@ -1,5 +1,6 @@
 <?php
 $title_page = 'Manage Task Users Account';
+include_once('../../includes/gate_admin.php'); 
 include_once('../../includes/header.php');
 include_once('../../functions/users.php');
 include_once('../../functions/tasks.php');

@@ -1,4 +1,5 @@
 <?php
+include_once('../../includes/gate_admin.php'); 
 include_once('../../functions/users.php');
 $userID = $_GET['id'];
 $userEdit = getUser($userID);
