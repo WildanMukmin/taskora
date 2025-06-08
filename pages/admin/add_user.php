@@ -67,7 +67,7 @@ include_once('../../functions/users.php');
 
           <div class="mb-4">
             <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
-            <select name="role" id="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <select disabled name="role" id="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>
