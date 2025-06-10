@@ -12,6 +12,21 @@ $total_tasks_progress = 0;
 $total_tasks_done = 0;
 $total_tasks_high_priority = 0;
 $categories = getCategories();
+$status = "";
+$category = "";
+$priority = "";
+
+if (isset($_GET['status']) === "all" && isset($_GET['category']) === "all" && isset($_GET['priority']) === "all"){
+    header("Location: dashboard.php");
+    exit;
+}
+
+if (isset($_GET['status']) && isset($_GET['category']) && isset($_GET['priority'])) {
+    $status = $_GET['status'];
+    $category = $_GET['category'];
+    $priority = $_GET['priority'];
+    $tasks = getTasksByStatusCategoryPriority($user_id, $status, $category, $priority);
+}
 
 if ($tasks) {
     foreach ($tasks as $task) {
@@ -27,7 +42,6 @@ if ($tasks) {
         $total_tasks++; 
     }
 }
-echo $total_tasks_high_priority;
 ?>
 
 <main class="flex-grow p-4 md:p-6 bg-gray-50">
@@ -132,21 +146,25 @@ echo $total_tasks_high_priority;
                     <h2 class="text-lg font-semibold text-gray-800">My Tasks</h2>
                     <form method="get" class="grid grid-cols-1 sm:grid-cols-4 gap-3 w-full md:w-auto">
                         <select name="status" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all">All Status</option>
-                            <option value="progress">Progress</option>
-                            <option value="done">Done</option>
+                            <option value="all" <?= ($status === 'all') ? 'selected' : ''; ?>>All Status</option>
+                            <option value="progress" <?= ($status === 'progress') ? 'selected' : ''; ?>>Progress</option>
+                            <option value="done" <?= ($status === 'done') ? 'selected' : ''; ?>>Done</option>
                         </select>
+
                         <select name="category" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all">All Categories</option>
-                            <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
+                            <option value="all" <?= ($category === 'all') ? 'selected' : ''; ?>>All Categories</option>
+                            <?php foreach ($categories as $cat): // Ganti $category menjadi $cat untuk menghindari konflik dengan variabel $category dari $_GET ?>
+                                <option value="<?= $cat['id']; ?>" <?= ((string)$cat['id'] === $category) ? 'selected' : ''; ?>>
+                                    <?= $cat['name']; ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
+
                         <select name="priority" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all">All Priorities</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
+                            <option value="all" <?= ($priority === 'all') ? 'selected' : ''; ?>>All Priorities</option>
+                            <option value="high" <?= ($priority === 'high') ? 'selected' : ''; ?>>High</option>
+                            <option value="medium" <?= ($priority === 'medium') ? 'selected' : ''; ?>>Medium</option>
+                            <option value="low" <?= ($priority === 'low') ? 'selected' : ''; ?>>Low</option>
                         </select>
                         <button type="submit" class="text-sm font-medium bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 transition">
                             Apply Filters
