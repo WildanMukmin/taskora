@@ -3,10 +3,9 @@ $title_page = 'Tasks User';
 include_once('../../includes/gate_user.php'); 
 include_once('../../includes/header.php');
 
-include('tasks.php');
 ?>
 
-<main class="flex-grow p-4">
+<div class="flex-grow p-4">
   <!-- Task List Table -->
   <div class="overflow-x-auto">
     <table class="min-w-full divide-y divide-gray-200">
@@ -86,6 +85,6 @@ include('tasks.php');
       </tbody>
     </table>
   </div>
-</main>
+</div>
 
 <?php include_once('../../includes/footer.php'); ?>

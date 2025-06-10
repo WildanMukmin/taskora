@@ -22,7 +22,7 @@ function getTasks(){
     return $result ? $result->fetch_all(MYSQLI_ASSOC) : false;
 }
 
-function getTasksById(){
+function getTasksById($id){
     global $conn;
 
     $sql = "
@@ -34,7 +34,7 @@ function getTasksById(){
         FROM tasks
         JOIN users ON tasks.user_id = users.id
         LEFT JOIN categories ON tasks.category_id = categories.id
-        WHERE tasks.user_id = ?
+        WHERE tasks.user_id = $id
         ORDER BY tasks.created_at DESC
     ";
 

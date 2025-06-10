@@ -4,7 +4,7 @@ include_once('../../includes/gate_user.php');
 include_once('../../includes/header.php');
 ?>
 
-<main class="flex-grow p-4 md:p-6 bg-gray-50 min-h-screen">
+<div class="flex-grow p-4 md:p-6 bg-gray-50 min-h-screen">
     <div class="max-w-4xl mx-auto">
         <div class="mb-6">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Upcoming Deadlines</h2>
@@ -56,7 +56,7 @@ include_once('../../includes/header.php');
             </div>
         </div>
     </div>
-</main>
+</div>
 
 
 <?php include_once('../../includes/footer.php'); ?>
