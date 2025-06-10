@@ -2,7 +2,49 @@
 $title_page = 'My Tasks';
 include_once('../../includes/header.php');
 include_once('../../includes/gate_user.php');
+include_once('../../functions/users.php');
+include_once('../../functions/tasks.php');
+include_once('../../functions/category.php');
 
+$tasks = getTasksById($user_id);
+$total_tasks = 0;
+$total_tasks_progress = 0;
+$total_tasks_done = 0;
+$total_tasks_high_priority = 0;
+$categories = getCategories();
+$status = "";
+$category = "";
+$priority = "";
+
+if(isset($_GET["message"])) {
+    echo $_GET['massage'];
+}
+if (isset($_GET['status']) === "all" && isset($_GET['category']) === "all" && isset($_GET['priority']) === "all"){
+    header("Location: dashboard.php");
+    exit;
+}
+
+if (isset($_GET['status']) && isset($_GET['category']) && isset($_GET['priority'])) {
+    $status = $_GET['status'];
+    $category = $_GET['category'];
+    $priority = $_GET['priority'];
+    $tasks = getTasksByStatusCategoryPriority($user_id, $status, $category, $priority);
+}
+
+if ($tasks) {
+    foreach ($tasks as $task) {
+        if ($task['status'] === 'progress') {
+            $total_tasks_progress++;
+        }
+        elseif ($task['status'] === 'done') {
+            $total_tasks_done++;
+        }
+        if($task['priority'] === 'high'){
+            $total_tasks_high_priority++;
+        }
+        $total_tasks++; 
+    }
+}
 ?>
 
 <main class="p-6 bg-gray-50 min-h-screen">
