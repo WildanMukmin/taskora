@@ -2,7 +2,6 @@
 $title_page = 'Tasks User';
 include_once('../../includes/gate_user.php'); 
 include_once('../../includes/header.php');
-
 ?>
 
 <div class="flex-grow p-4">

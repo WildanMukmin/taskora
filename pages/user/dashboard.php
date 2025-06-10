@@ -16,6 +16,9 @@ $status = "";
 $category = "";
 $priority = "";
 
+if(isset($_GET["message"])) {
+    echo $_GET['massage'];
+}
 if (isset($_GET['status']) === "all" && isset($_GET['category']) === "all" && isset($_GET['priority']) === "all"){
     header("Location: dashboard.php");
     exit;

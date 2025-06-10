@@ -1,19 +1,23 @@
 <?php
-$title_page = 'Add New Task';
-include_once('../../includes/gate_user.php');
-include_once('../../includes/header.php');
+include_once('../../functions/tasks.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    addTask($_POST["user_id"], $_POST["category_id"], $_POST["title"], $_POST["description"], $_POST["priority"], $_POST["due_date"]);
+}
 ?>
 
 <main class="p-6 min-h-screen bg-gray-50">
 
     <!-- Modal backdrop -->
-        <div id="modalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
+    <div id="modalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
 
         <!-- Modal content -->
         <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
             <h2 class="text-xl font-semibold mb-4">Add New Task</h2>
 
-            <form action="#" method="POST" class="space-y-4">
+            <form action="add_task_user.php" method="POST" class="space-y-4">
+                <input type="hidden" name="user_id" value="<?= $user_id; ?>">
+                <input type="hidden" name="status" value="pending">
+                
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700">Task Title</label>
                     <input type="text" name="title" id="title" required
@@ -43,12 +47,12 @@ include_once('../../includes/header.php');
                 </div>
 
                 <div>
-                    <label for="categories" class="block text-sm font-medium text-gray-700">Categories</label>
-                    <select name="priority" id="priority"
+                    <label for="category_id" class="block text-sm font-medium text-gray-700">Categories</label>
+                    <select name="category_id" id="category_id"
                         class="w-full mt-1 border rounded px-3 py-2 text-sm focus:outline-indigo-500">
-                        <option value="personal">Work</option>
-                        <option value="work" selected>Personal</option>
-                        <option value="school">Study</option>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 

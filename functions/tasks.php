@@ -113,4 +113,21 @@ function getTasksByStatusCategoryPriority(int $userId, string $status, string $c
         return false;
     }
 }
+function addTask(int $userId, int $categoryId, string $title, string $description, string $priority, string $dueDate) {
+    global $conn;
+
+    $sql = "INSERT INTO tasks (user_id, category_id, title, description, priority, due_date) VALUES ($userId, $categoryId, '$title', '$description', '$priority', '$dueDate')";
+
+    $result = $conn->query($sql);
+    if ($result) {
+        $_SESSION["success"] = "Task berhasil ditambahkan.";   
+        $_SESSION["success_time"] = time(); 
+    }
+    else {
+        $_SESSION["error"] = "Task gagal ditambahkan.";   
+        $_SESSION["error_time"] = time(); 
+    }
+    header("Location: dashboard.php");
+    exit;
+}
 ?>
