@@ -143,4 +143,18 @@ function deleteTaskById(int $taskId) {
         $_SESSION["error_time"] = time(); 
     }
 }
+
+function markDoneByid(int $id) {
+    global $conn;
+    $sql = "UPDATE tasks SET status = 'done' WHERE id = $id";
+    $result = $conn->query($sql);
+    if ($result) {
+        $_SESSION["success"] = "Task berhasil ditambahkan.";   
+        $_SESSION["success_time"] = time(); 
+    }
+    else {
+        $_SESSION["error"] = "Task gagal ditambahkan.";   
+        $_SESSION["error_time"] = time(); 
+    }
+}
 ?>
