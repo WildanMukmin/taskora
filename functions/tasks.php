@@ -130,4 +130,17 @@ function addTask(int $userId, int $categoryId, string $title, string $descriptio
     header("Location: my_tasks.php");
     exit;
 }
+function deleteTaskById(int $taskId) {
+    global $conn;
+    $sql = "DELETE FROM tasks WHERE id = $taskId";
+    $result = $conn->query($sql);
+        if ($result) {
+        $_SESSION["success"] = "Task berhasil ditambahkan.";   
+        $_SESSION["success_time"] = time(); 
+    }
+    else {
+        $_SESSION["error"] = "Task gagal ditambahkan.";   
+        $_SESSION["error_time"] = time(); 
+    }
+}
 ?>
