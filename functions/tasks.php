@@ -127,7 +127,7 @@ function addTask(int $userId, int $categoryId, string $title, string $descriptio
         $_SESSION["error"] = "Task gagal ditambahkan.";   
         $_SESSION["error_time"] = time(); 
     }
-    header("Location: dashboard.php");
+    header("Location: my_tasks.php");
     exit;
 }
 ?>
