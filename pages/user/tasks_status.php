@@ -2,9 +2,9 @@
 $title_page = 'Tasks by Status';
 include_once('../../includes/header.php');
 include_once('../../includes/gate_user.php'); 
+include_once('../../functions/tasks.php');
 
-// Dummy task list
-include('tasks.php');
+$tasks = getTasksById($user_id);
 ?>
 
 <main class="p-6 bg-gray-50 min-h-screen">
