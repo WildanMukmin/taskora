@@ -2,6 +2,7 @@
 include_once('../../functions/tasks.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     addTask($_POST["user_id"], $_POST["category_id"], $_POST["title"], $_POST["description"], $_POST["priority"], $_POST["due_date"]);
+    header("Location: dashboard.php");
 }
 ?>
 
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
             <h2 class="text-xl font-semibold mb-4">Add New Task</h2>
 
-            <form action="add_task_user.php" method="POST" class="space-y-4">
+            <form action="add_task_dashboard.php" method="POST" class="space-y-4">
                 <input type="hidden" name="user_id" value="<?= $user_id; ?>">
                 <input type="hidden" name="status" value="pending">
                 

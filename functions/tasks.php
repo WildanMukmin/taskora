@@ -171,8 +171,6 @@ function addTask(int $userId, int $categoryId, string $title, string $descriptio
         $_SESSION["error"] = "Task gagal ditambahkan.";   
         $_SESSION["error_time"] = time(); 
     }
-    header("Location: my_tasks.php");
-    exit;
 }
 function deleteTaskById(int $taskId) {
     global $conn;
