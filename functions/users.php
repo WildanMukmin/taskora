@@ -90,6 +90,31 @@ function updateUser($id, $name, $email) {
     exit;
 }
 
+function updateProfileUser($id, $name, $email) {
+    global $conn;
+
+    $id = (int)$id;
+    $name = mysqli_real_escape_string($conn, $name);
+    $email = mysqli_real_escape_string($conn, $email);
+
+    $sql = "UPDATE users SET name = '$name', email = '$email' WHERE id = $id";
+
+    $result = $conn->query($sql);
+
+    if ($result) {
+        $updatedUser = getUser($id);
+        if ($updatedUser) {
+            $_SESSION['user'] = $updatedUser;
+        }
+
+        $_SESSION["success"] = "User berhasil diupdate.";   
+        $_SESSION["success_time"] = time(); 
+    } else {
+        $_SESSION["error"] = "User gagal diupdate.";   
+        $_SESSION["error_time"] = time(); 
+    }
+}
+
 function deleteUser($id) {
     global $conn;
     $id = (int)$id;
