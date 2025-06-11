@@ -43,6 +43,50 @@ function getTasksById($id){
     return $result ? $result->fetch_all(MYSQLI_ASSOC) : false;
 }
 
+function getTaskById($id){
+    global $conn;
+
+    $sql = "
+        SELECT 
+            tasks.*,
+            users.name AS user_name,
+            users.email AS user_email,
+            categories.name AS category_name
+        FROM tasks
+        JOIN users ON tasks.user_id = users.id
+        LEFT JOIN categories ON tasks.category_id = categories.id
+        WHERE tasks.id = $id
+        LIMIT 1
+    ";
+
+    $result = $conn->query($sql);
+
+    return $result ? $result->fetch_assoc() : false;
+}
+
+function updateTaskById($id, $title, $description, $priority, $due_date, $category_id) {
+    global $conn;
+
+    $title = $conn->real_escape_string($title);
+    $description = $conn->real_escape_string($description);
+    $priority = $conn->real_escape_string($priority);
+    $due_date = $conn->real_escape_string($due_date);
+    $category_id = (int)$category_id;
+
+    $sql = "
+        UPDATE tasks
+        SET 
+            title = '$title',
+            description = '$description',
+            priority = '$priority',
+            due_date = '$due_date',
+            category_id = $category_id
+        WHERE id = $id
+    ";
+
+    return $conn->query($sql);
+}
+
 function getTasksByStatusCategoryPriority(int $userId, string $status, string $category, string $priority) {
     global $conn;
     $sql = "
