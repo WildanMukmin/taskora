@@ -20,7 +20,7 @@ $userProfile = getUser($user_id);
                     <span><?= htmlspecialchars($userProfile['email']); ?></span>
                 </div>
                 <div class="flex justify-between border-b pb-2">
-                    <span class="font-medium">Dibuat Pada:</span>
+                    <span class="font-medium">Account created on:</span>
                     <span><?= date('F j, Y', strtotime($userProfile['created_at'])); ?></span>
                 </div>
                 <div class="flex justify-between border-b pb-2">
