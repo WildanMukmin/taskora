@@ -83,7 +83,10 @@ if ($tasks) {
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">user </th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">category</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">title</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">status</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Priority</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Due Date</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Created at</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Update at</th>
         </tr>
@@ -96,12 +99,15 @@ if ($tasks) {
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($task['user_name']); ?></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($task['category_name'] ?? '-'); ?></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($task['title']); ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['description']; ?></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <span class="inline-block px-2 py-1 text-xs font-semibold rounded 
             <?= $task['status'] === 'done' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'; ?>">
                   <?= ucfirst($task['status']); ?>
                 </span>
               </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['priority']; ?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['due_date']; ?></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['created_at']; ?></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $task['updated_at']; ?></td>
             </tr>

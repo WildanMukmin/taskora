@@ -28,7 +28,7 @@ if ($tasks) {
 <main class="flex-grow p-4">
   <div class="grid grid-cols-1 gap-6 mb-8">
     <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-xl font-bold text-blue-600 mb-2">WELCOME BACK, ADMIN</h2>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">WELCOME BACK, <span class="text-indigo-600 uppercase"><?= $username; ?></span>!</h2>
       <p class="text-gray-600">Here's what's happening with your task management platform today!</p>
     </div>
   </div>
