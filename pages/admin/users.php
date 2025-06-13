@@ -16,7 +16,7 @@ $total_users = getTotalUsers();
         <h1 class="text-xl font-bold text-blue-600">Manage Users</h1>
       </div>
       
-      <a href="/taskora/pages/admin/add_user.php"
+      <a href="/pages/admin/add_user.php"
         class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 shadow-sm hover:shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
