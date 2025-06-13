@@ -1,9 +1,9 @@
 <?php
 $title_page = 'Manage Task Users Account';
-include_once('../../includes/gate_admin.php'); 
-include_once('../../includes/header.php');
-include_once('../../functions/users.php');
-include_once('../../functions/tasks.php');
+require_once __DIR__ . '/../../includes/gate_admin.php'; 
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../functions/users.php';
+require_once __DIR__ . '/../../functions/tasks.php';
 $tasks = getTasks();
 $total_tasks = 0;
 $total_tasks_progress = 0;
@@ -125,4 +125,4 @@ if ($tasks) {
   </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

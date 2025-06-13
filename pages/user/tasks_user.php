@@ -1,7 +1,7 @@
 <?php
 $title_page = 'Tasks User';
-include_once('../../includes/gate_user.php'); 
-include_once('../../includes/header.php');
+require_once __DIR__ . '/../../includes/gate_user.php'; 
+require_once __DIR__ . '/../../includes/header.php';
 ?>
 
 <div class="flex-grow p-4">
@@ -86,4 +86,4 @@ include_once('../../includes/header.php');
   </div>
 </div>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

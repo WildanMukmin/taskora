@@ -1,9 +1,9 @@
 <?php
 $title_page = 'Tasks by Category';
-include_once('../../includes/header.php');
-include_once('../../includes/gate_user.php'); 
-include_once('../../functions/tasks.php');
-include_once('../../functions/category.php');
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../includes/gate_user.php'; 
+require_once __DIR__ . '/../../functions/tasks.php';
+require_once __DIR__ . '/../../functions/category.php';
 
 $categories = getCategories();
 $tasks = getTasksById($user_id);
@@ -35,4 +35,4 @@ $tasks = getTasksById($user_id);
     </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

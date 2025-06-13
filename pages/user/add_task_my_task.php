@@ -1,5 +1,5 @@
 <?php
-include_once('../../functions/tasks.php');
+require_once __DIR__ . '/../../functions/tasks.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     addTask($_POST["user_id"], $_POST["category_id"], $_POST["title"], $_POST["description"], $_POST["priority"], $_POST["due_date"]);
     header("Location: my_tasks.php");
@@ -88,4 +88,4 @@ document.getElementById('closeModalX').addEventListener('click', () => {
 });
 </script>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

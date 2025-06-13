@@ -1,6 +1,6 @@
 <?php
 $title_page = 'Profile Settings';
-include_once('../../functions/users.php');
+require_once __DIR__ . '/../../functions/users.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['user_id'];
     $name = $_POST['name'];
@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: profile_user.php");
     exit;
 }
-include_once('../../includes/gate_user.php');
-include_once('../../includes/header.php');
+require_once __DIR__ . '/../../includes/gate_user.php';
+require_once __DIR__ . '/../../includes/header.php';
 
 $user = getUser($user_id);
 
@@ -44,4 +44,4 @@ $user = getUser($user_id);
     </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

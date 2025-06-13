@@ -1,8 +1,8 @@
 <?php
 $title_page = 'Manage Users Account';
-include_once('../../includes/gate_admin.php'); 
-include_once('../../includes/header.php');
-include_once('../../functions/users.php');
+require_once __DIR__ . '/../../includes/gate_admin.php'; 
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../functions/users.php';
 $total_users = getTotalUsers();
 ?>
 
@@ -97,4 +97,4 @@ $total_users = getTotalUsers();
   </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

@@ -1,9 +1,9 @@
 <?php 
 $title_page = 'Dashboard admin';
-include_once('../../includes/header.php'); 
-include_once('../../includes/gate_admin.php'); 
-include_once('../../functions/users.php');
-include_once('../../functions/tasks.php');
+require_once __DIR__ . '/../../includes/header.php'; 
+require_once __DIR__ . '/../../includes/gate_admin.php'; 
+require_once __DIR__ . '/../../functions/users.php';
+require_once __DIR__ . '/../../functions/tasks.php';
 
 $total_users = getTotalUsers();
 $tasks = getTasks();
@@ -61,5 +61,5 @@ if ($tasks) {
 
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
 

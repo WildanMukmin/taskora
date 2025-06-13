@@ -1,10 +1,10 @@
 <?php
 $title_page = 'My Tasks';
-include_once('../../includes/header.php');
-include_once('../../includes/gate_user.php');
-include_once('../../functions/users.php');
-include_once('../../functions/tasks.php');
-include_once('../../functions/category.php');
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../includes/gate_user.php';
+require_once __DIR__ . '/../../functions/users.php';
+require_once __DIR__ . '/../../functions/tasks.php';
+require_once __DIR__ . '/../../functions/category.php';
 
 $tasks = getTasksById($user_id);
 $total_tasks = 0;
@@ -200,4 +200,4 @@ if ($tasks) {
     });
 </script>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
