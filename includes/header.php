@@ -48,7 +48,6 @@ require_once __DIR__ . '/../config/config.php';
   </nav>
 </header>
 <?php endif;?>
-
 <?php if ($role === "user"): ?>
 <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-10">
   <!-- Logo -->

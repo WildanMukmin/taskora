@@ -114,7 +114,7 @@ if ($tasks) {
                             </div>
                             <div class="ml-4">
                             <div class="text-sm font-medium text-gray-900"><?= htmlspecialchars($task['title']) ?></div>
-                            <div class="text-xs text-gray-500 truncate max-w-xs"><?= ucfirst($task['category'] ?? '-') ?></div>
+                            <div class="text-xs text-gray-500 truncate max-w-xs"><?= ucfirst($task['category_name'] ?? '-') ?></div>
                             </div>
                         </div>
                         </td>
