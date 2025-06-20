@@ -1,11 +1,11 @@
-````markdown
+
 # ✅ Taskora - Task Organizer
 
 ## 📝 Deskripsi Proyek
 
-**Taskora** adalah aplikasi web berbasis PHP yang dirancang untuk membantu pengguna (user/mahasiswa) dan admin dalam mengelola, melacak, dan menyelesaikan tugas-tugas harian maupun akademik secara efisien. Aplikasi ini mendukung dua peran utama: **Admin** dan **User**.
+**Taskora** adalah aplikasi web yang dirancang untuk membantu pengguna dan admin dalam mengelola, melacak, dan menyelesaikan tugas-tugas harian maupun akademik secara efisien. Aplikasi ini menyediakan fitur manajemen tugas dengan antarmuka yang intuitif dan mendukung alur kerja dua jenis pengguna: **Admin** dan **User (ex: Mahasiswa)**.
 
-Dengan antarmuka yang intuitif dan sistem yang terstruktur, Taskora memungkinkan pengguna untuk menambahkan tugas, menetapkan prioritas, menentukan tenggat waktu (deadline), serta memantau progresnya. Sementara itu, admin memiliki akses penuh untuk mengelola data pengguna, kategori tugas, status, dan seluruh aktivitas sistem.
+Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentukan tenggat waktu (deadline), dan memantau progresnya. Admin memiliki akses penuh untuk memonitor seluruh aktivitas dan mengelola data pengguna, kategori tugas, serta status tugas.
 
 ![image](https://github.com/user-attachments/assets/e74e9f6c-390b-45ec-86d9-b0fbefe551f8)
 
@@ -127,9 +127,9 @@ Dengan antarmuka yang intuitif dan sistem yang terstruktur, Taskora memungkinkan
 
 ## 👨‍💻 Kontributor
 
-1. **Clara Monica** – [GitHub](https://github.com/)
-2. **Luthfia Rahma Sholihah** – [GitHub](https://github.com/)
-3. **Wildan Mukmin** – [GitHub](https://github.com/)
+1. **Clara Monica** – [GitHub](https://github.com/ClaraaMon0o0)
+2. **Luthfia Rahma Sholihah** – [GitHub](https://github.com/Luthfiaa1407)
+3. **Wildan Mukmin** – [GitHub](https://github.com/WildanMukmin)
 
 ---
 
