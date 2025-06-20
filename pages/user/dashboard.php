@@ -190,7 +190,10 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <?php if (!empty($tasks)): ?>
                                     <?php foreach ($tasks as $task): ?>
-                                    <tr class="hover:bg-gray-50 transition">
+                                    
+                                    <tr class="
+                                        <?= strtotime($task['due_date']) < strtotime(date('Y-m-d')) && $task['status'] !== 'done' ? 'bg-red-100 hover:bg-red-50 transition' : 'hover:bg-gray-50 transition'; ?>
+                                    ">
                                         <td class="px-6 py-4">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-9 w-9 flex items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100 transition">
@@ -199,7 +202,7 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
                                                     </svg>
                                                 </div>
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900"><?= htmlspecialchars($task['title']) ?></div>
+                                                    <div class="text-sm font-medium  <?= strtotime($task['due_date']) < strtotime(date('Y-m-d')) && $task['status'] !== 'done' ? 'text-red-800' : 'text-gray-900' ?>"><?= htmlspecialchars($task['title']) ?></div>
                                                     <div class="text-xs text-gray-500 truncate max-w-xs"><?= htmlspecialchars(ucfirst($task['category_name'] ?? '-')) ?></div>
                                                 </div>
                                             </div>
