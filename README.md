@@ -7,8 +7,7 @@
 
 Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentukan tenggat waktu (deadline), dan memantau progresnya. Admin memiliki akses penuh untuk memonitor seluruh aktivitas dan mengelola data pengguna, kategori tugas, serta status tugas.
 
-![image](https://github.com/user-attachments/assets/e74e9f6c-390b-45ec-86d9-b0fbefe551f8)
-
+![screenshot-1750434399334](https://github.com/user-attachments/assets/7b41e557-b3d8-4151-a87f-0e27a6baf5a1)
 
 ---
 
