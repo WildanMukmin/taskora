@@ -1,4 +1,12 @@
 <?php
+if (
+    isset($_GET['status']) && $_GET['status'] === "all" &&
+    isset($_GET['category']) && $_GET['category'] === "all" &&
+    isset($_GET['priority']) && $_GET['priority'] === "all"
+) {
+    header("Location: my_tasks.php");
+    exit;
+}
 $title_page = 'My Tasks';
 require_once __DIR__ . '/../../includes/header.php';
 require_once __DIR__ . '/../../includes/gate_user.php';
@@ -16,13 +24,6 @@ $status = "";
 $category = "";
 $priority = "";
 
-if(isset($_GET["message"])) {
-    echo $_GET['massage'];
-}
-if (isset($_GET['status']) === "all" && isset($_GET['category']) === "all" && isset($_GET['priority']) === "all"){
-    header("Location: dashboard.php");
-    exit;
-}
 
 if (isset($_GET['status']) && isset($_GET['category']) && isset($_GET['priority'])) {
     $status = $_GET['status'];
@@ -59,28 +60,29 @@ if ($tasks) {
         <!-- Filter Section -->
         <div class="bg-white rounded-xl shadow-sm p-5 mb-6 border border-gray-100">
                     <form method="get" class="grid grid-cols-1 sm:grid-cols-4 gap-3 w-full md:w-auto">
-                        <select name="status" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all" <?= ($status === 'all') ? 'selected' : ''; ?>>All Status</option>
-                            <option value="progress" <?= ($status === 'progress') ? 'selected' : ''; ?>>Progress</option>
-                            <option value="done" <?= ($status === 'done') ? 'selected' : ''; ?>>Done</option>
-                        </select>
-
                         <select name="category" class="text-sm rounded-lg py-2 px-3 border-gray-200">
                             <option value="all" <?= ($category === 'all') ? 'selected' : ''; ?>>All Categories</option>
                             <?php foreach ($categories as $cat): // Ganti $category menjadi $cat untuk menghindari konflik dengan variabel $category dari $_GET ?>
                                 <option value="<?= $cat['id']; ?>" <?= ((string)$cat['id'] === $category) ? 'selected' : ''; ?>>
                                     <?= $cat['name']; ?>
                                 </option>
-                            <?php endforeach; ?>
-                        </select>
+                                <?php endforeach; ?>
+                            </select>
+                            
+                            <select name="priority" class="text-sm rounded-lg py-2 px-3 border-gray-200">
+                                <option value="all" <?= ($priority === 'all') ? 'selected' : ''; ?>>All Priorities</option>
+                                <option value="high" <?= ($priority === 'high') ? 'selected' : ''; ?>>High</option>
+                                <option value="medium" <?= ($priority === 'medium') ? 'selected' : ''; ?>>Medium</option>
+                                <option value="low" <?= ($priority === 'low') ? 'selected' : ''; ?>>Low</option>
+                            </select>
+                            
+                            <select name="status" class="text-sm rounded-lg py-2 px-3 border-gray-200">
+                                <option value="all" <?= ($status === 'all') ? 'selected' : ''; ?>>All Status</option>
+                                <option value="progress" <?= ($status === 'progress') ? 'selected' : ''; ?>>Progress</option>
+                                <option value="done" <?= ($status === 'done') ? 'selected' : ''; ?>>Done</option>
+                            </select>
 
-                        <select name="priority" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all" <?= ($priority === 'all') ? 'selected' : ''; ?>>All Priorities</option>
-                            <option value="high" <?= ($priority === 'high') ? 'selected' : ''; ?>>High</option>
-                            <option value="medium" <?= ($priority === 'medium') ? 'selected' : ''; ?>>Medium</option>
-                            <option value="low" <?= ($priority === 'low') ? 'selected' : ''; ?>>Low</option>
-                        </select>
-                        <button type="submit" class="text-sm font-medium bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 transition">
+                            <button type="submit" class="text-sm font-medium bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 transition">
                             Apply Filters
                         </button>
                     </form>

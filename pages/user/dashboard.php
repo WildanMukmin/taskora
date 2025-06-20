@@ -1,4 +1,12 @@
 <?php
+if (
+    isset($_GET['status']) && $_GET['status'] === "all" &&
+    isset($_GET['category']) && $_GET['category'] === "all" &&
+    isset($_GET['priority']) && $_GET['priority'] === "all"
+) {
+    header("Location: dashboard.php");
+    exit;
+}
 $title_page = 'Dashboard User';
 require_once __DIR__ . '/../../includes/header.php';
 require_once __DIR__ . '/../../includes/gate_user.php';
@@ -15,19 +23,6 @@ $categories = getCategories();
 $status = "";
 $category = "";
 $priority = "";
-
-// Perbaikan: typo 'massage' menjadi 'message'
-if(isset($_GET["message"])) {
-    echo htmlspecialchars($_GET['message']);
-}
-
-// Perbaikan: logika kondisi untuk redirect
-if (isset($_GET['status']) && $_GET['status'] === "all" && 
-    isset($_GET['category']) && $_GET['category'] === "all" && 
-    isset($_GET['priority']) && $_GET['priority'] === "all"){
-    header("Location: dashboard.php");
-    exit;
-}
 
 if (isset($_GET['status']) && isset($_GET['category']) && isset($_GET['priority'])) {
     $status = $_GET['status'];
@@ -51,7 +46,6 @@ if ($tasks) {
     }
 }
 
-// Hitung persentase untuk progress bar yang dinamis
 $progress_percentage = $total_tasks > 0 ? round(($total_tasks_progress / $total_tasks) * 100) : 0;
 $done_percentage = $total_tasks > 0 ? round(($total_tasks_done / $total_tasks) * 100) : 0;
 $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority / $total_tasks) * 100) : 0;
@@ -74,9 +68,7 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
         </div>
     </div>
 
-    <!-- Stats Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <!-- Total Tasks -->
         <div class="bg-white rounded-xl p-5 hover:shadow-md transition border border-gray-100 group">
             <div class="flex justify-between items-start">
                 <div>
@@ -94,7 +86,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
             </div>
         </div>
 
-        <!-- In Progress -->
         <div class="bg-white rounded-xl p-5 hover:shadow-md transition border border-gray-100 group">
             <div class="flex justify-between items-start">
                 <div>
@@ -112,7 +103,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
             </div>
         </div>
 
-        <!-- Done -->
         <div class="bg-white rounded-xl p-5 hover:shadow-md transition border border-gray-100 group">
             <div class="flex justify-between items-start">
                 <div>
@@ -130,7 +120,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
             </div>
         </div>
 
-        <!-- High Priority -->
         <div class="bg-white rounded-xl p-5 hover:shadow-md transition border border-gray-100 group">
             <div class="flex justify-between items-start">
                 <div>
@@ -149,19 +138,12 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
         </div>
     </div>
 
-    <!-- Task and Sidebar -->
     <div class="flex flex-col lg:flex-row gap-6">
         <div class="lg:w-2/3">
             <div class="bg-white rounded-xl shadow-sm p-5 mb-6 border border-gray-100">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <h2 class="text-lg font-semibold text-gray-800">My Tasks</h2>
                     <form method="get" class="grid grid-cols-1 sm:grid-cols-4 gap-3 w-full md:w-auto">
-                        <select name="status" class="text-sm rounded-lg py-2 px-3 border-gray-200">
-                            <option value="all" <?= ($status === 'all') ? 'selected' : ''; ?>>All Status</option>
-                            <option value="progress" <?= ($status === 'progress') ? 'selected' : ''; ?>>Progress</option>
-                            <option value="done" <?= ($status === 'done') ? 'selected' : ''; ?>>Done</option>
-                        </select>
-
                         <select name="category" class="text-sm rounded-lg py-2 px-3 border-gray-200">
                             <option value="all" <?= ($category === 'all') ? 'selected' : ''; ?>>All Categories</option>
                             <?php if (!empty($categories)): ?>
@@ -179,6 +161,12 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
                             <option value="medium" <?= ($priority === 'medium') ? 'selected' : ''; ?>>Medium</option>
                             <option value="low" <?= ($priority === 'low') ? 'selected' : ''; ?>>Low</option>
                         </select>
+
+                        <select name="status" class="text-sm rounded-lg py-2 px-3 border-gray-200">
+                            <option value="all" <?= ($status === 'all') ? 'selected' : ''; ?>>All Status</option>
+                            <option value="progress" <?= ($status === 'progress') ? 'selected' : ''; ?>>Progress</option>
+                            <option value="done" <?= ($status === 'done') ? 'selected' : ''; ?>>Done</option>
+                        </select>
                         <button type="submit" class="text-sm font-medium bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 transition">
                             Apply Filters
                         </button>
@@ -188,7 +176,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
 
             <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
                 <div class="flex-grow p-4">
-                    <!-- Task List Table -->
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -279,7 +266,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
             </div>
         </div>
 
-        <!-- Right Sidebar -->
         <div class="lg:w-1/3">
             <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Upcoming Deadlines</h2>
@@ -294,7 +280,6 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
                             $due = $task['due_date'];
                             $status = $task['status'];
 
-                            // Tampilkan hanya tugas yang masih dalam progress dan due date >= hari ini
                             if ($status === 'progress' && $due >= $today):
                                 $hasUpcoming = true;
                                 $daysLeft = (strtotime($due) - strtotime($today)) / (60 * 60 * 24);
@@ -347,10 +332,8 @@ $high_priority_percentage = $total_tasks > 0 ? round(($total_tasks_high_priority
     </div>
 </main>
 
-<!-- Include Modal -->
 <?php include('add_task_dashboard.php'); ?>
 
-<!-- Script for modal toggle -->
 <script>
     const openModalBtn = document.getElementById('openModalBtn');
     const modalBackdrop = document.getElementById('modalBackdrop');
