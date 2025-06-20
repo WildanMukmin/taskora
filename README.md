@@ -1,41 +1,39 @@
----
+````markdown
 # ✅ Taskora - Task Organizer
 
 ## 📝 Deskripsi Proyek
 
-**Taskora** adalah aplikasi web yang dirancang untuk membantu pengguna dan admin dalam mengelola, melacak, dan menyelesaikan tugas-tugas harian maupun akademik secara efisien. Aplikasi ini menyediakan fitur manajemen tugas dengan antarmuka yang intuitif dan mendukung alur kerja dua jenis pengguna: **Admin** dan **User (ex: Mahasiswa)**.
+**Taskora** adalah aplikasi web berbasis PHP yang dirancang untuk membantu pengguna (user/mahasiswa) dan admin dalam mengelola, melacak, dan menyelesaikan tugas-tugas harian maupun akademik secara efisien. Aplikasi ini mendukung dua peran utama: **Admin** dan **User**.
 
-Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentukan tenggat waktu (deadline), dan memantau progresnya. Admin memiliki akses penuh untuk memonitor seluruh aktivitas dan mengelola data pengguna, kategori tugas, serta status tugas.
+Dengan antarmuka yang intuitif dan sistem yang terstruktur, Taskora memungkinkan pengguna untuk menambahkan tugas, menetapkan prioritas, menentukan tenggat waktu (deadline), serta memantau progresnya. Sementara itu, admin memiliki akses penuh untuk mengelola data pengguna, kategori tugas, status, dan seluruh aktivitas sistem.
 
-![image](https://github.com/user-attachments/assets/525e352d-5dd8-47ea-89ee-5633beede1ce)
+![image](https://github.com/user-attachments/assets/e74e9f6c-390b-45ec-86d9-b0fbefe551f8)
+
 
 ---
 
 ## 🚀 Fitur Utama
 
 ### 🔹 Umum
+- Desain responsif dengan Tailwind CSS.
+- Navigasi yang sederhana dan ramah pengguna.
+- Modal interaktif untuk proses edit tugas.
 
-- Responsive design berbasis Tailwind CSS.
-- Navigasi sederhana dan pengalaman pengguna yang ramah.
-
-### 👤 Sebagai User
-
-- **Tambah & Edit Tugas**: Isi judul, deskripsi, deadline, prioritas, dan kategori.
-- **Tandai Tugas Selesai**: Ubah status tugas ketika sudah diselesaikan.
-- **Lihat Tugas Milik Sendiri**: Filter berdasarkan kategori, prioritas, atau tanggal.
-- **Upcoming Deadlines**: Tampilkan tugas yang paling mendekati tenggat waktu.
-- **Edit Profil**: Ubah informasi pribadi secara mandiri.
+### 👤 Sebagai User (Mahasiswa)
+- **Tambah & Edit Tugas**: Input judul, deskripsi, deadline, prioritas, dan kategori.
+- **Tandai Tugas Selesai**: Ubah status saat tugas sudah diselesaikan.
+- **Filter & Cari Tugas**: Berdasarkan status, kategori, atau prioritas.
+- **Upcoming Deadlines**: Menampilkan tugas dengan deadline terdekat.
+- **Edit Profil**: Ubah nama dan informasi akun secara mandiri.
 
 ### 🛠️ Sebagai Admin
-
 - **Manajemen User**: Tambah, ubah, dan hapus akun pengguna.
-- **Manajemen Semua Tugas**: Lihat dan kelola semua tugas dari seluruh pengguna.
-- **Manajemen Referensi**:
-  - Kategori tugas (`tasks_categories.php`)
-  - Prioritas tugas (`tasks_priorities.php`)
-  - Status tugas (`tasks_status.php`)
-- **Edit Data Tugas Secara Global**
-- **Akses Dashboard Admin**: Statistik, rekap tugas, dan data pengguna.
+- **Manajemen Semua Tugas**: Lihat dan kelola seluruh tugas pengguna.
+- **Kelola Referensi Tugas**:
+  - Kategori (`tasks_categories.php`)
+  - Prioritas (`tasks_priorities.php`)
+  - Status (`tasks_status.php`)
+- **Dashboard Statistik**: Lihat ringkasan tugas dan pengguna aktif.
 
 ---
 
@@ -44,15 +42,14 @@ Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentuk
 - **Frontend**: PHP Native, Tailwind CSS
 - **Backend**: PHP
 - **Database**: MySQL
-- **Web Server**: Apache (via XAMPP, Laragon, dsb.)
-- **JavaScript**: Untuk fitur interaktif seperti pop-up/modal
+- **Web Server**: Apache (via XAMPP, Laragon)
+- **JavaScript**: Untuk pop-up/modal dan interaksi UI
 
 ---
 
 ## ⚙️ Cara Instalasi
 
 1. **Clone Repositori**
-
    ```bash
    git clone https://github.com/WildanMukmin/taskora.git
 ````
@@ -63,33 +60,33 @@ Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentuk
    cd taskora
    ```
 
-3. **Atur Database**
+3. **Konfigurasi Database**
 
-   * Buat database baru di MySQL, misalnya: `taskora`.
-   * Import file `taskora.sql`yang tersedia.
-   * Edit konfigurasi koneksi database di `includes/config.php`.
+   * Buat database baru bernama `taskora` di phpMyAdmin.
+   * Import file `taskora.sql` yang tersedia di dalam folder proyek.
+   * Ubah pengaturan database di `includes/config.php` sesuai environment kamu.
 
 4. **Jalankan Server**
 
-   * Letakkan folder ke dalam `htdocs` (jika pakai XAMPP) dan 'www' (jika pakai Laragon).
-   * Aktifkan **Apache** dan **MySQL** di XAMPP/Laragon.
+   * Letakkan folder ke dalam `htdocs` (XAMPP) atau `www` (Laragon).
+   * Aktifkan **Apache** dan **MySQL** melalui control panel XAMPP/Laragon.
 
 5. **Akses Aplikasi**
 
-   * Buka browser dan akses `http://localhost/taskora/index.php`.
+   * Buka browser dan kunjungi `http://localhost/taskora/index.php`.
 
 ---
 
 ## 🔐 Kredensial Default
 
-### Admin:
+### Admin
 
 * Email: `admin@gmail.com`
 * Password: `admin123`
 
-### User:
+### User
 
-* Silahkan registrasi terlebuh dahulu dan login dengan akun yang sudah Anda daftar.
+* Silakan daftar melalui halaman **Register**, kemudian login menggunakan akun yang telah dibuat.
 
 ---
 
@@ -97,35 +94,34 @@ Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentuk
 
 ### ✅ Sebagai User
 
-1. **Masuk** ke akun Anda.
-2. Buka halaman **My Tasks** (`my_tasks.php`).
-3. Tambah tugas melalui **Add Task**.
-4. Gunakan **edit**, **delete**, dan **mark as done** untuk mengelola tugas.
-5. Cek **Upcoming Deadlines** untuk melihat tugas yang mendekati deadline.
-6. Gunakan menu **categories** untuk melihat semua kategori tugas anda berdasarkan status, prioritas, dan kategori.
-7. Terapkan **Apply Filter** untuk mencari tugas berdasarkan status, kategori, dan prioritas.
-8. Ubah data pribadi Anda di **Edit Profile**.
+1. Login menggunakan akun yang telah didaftarkan.
+2. Akses menu **My Tasks** untuk melihat, menambah, mengedit, atau menghapus tugas.
+3. Gunakan fitur **Mark as Done** untuk menandai tugas yang selesai.
+4. Gunakan menu **Categories** untuk melihat dan menyaring tugas berdasarkan status, kategori, atau prioritas.
+5. Gunakan **Apply Filter** untuk pencarian tugas yang lebih spesifik.
+6. Akses **Upcoming Deadlines** untuk melihat tugas yang paling mendesak.
+7. Edit data diri di menu **Edit Profile**.
 
 ### 🛠️ Sebagai Admin
 
-1. Login sebagai admin.
-2. Kelola pengguna di `users.php`:
+1. Login sebagai admin dengan kredensial yang disediakan.
+2. Akses halaman **Users** (`users.php`) untuk:
 
-   * Tambah user baru.
-   * Edit profil user.
-   * Hapus akun yang tidak aktif.
-3. Kelola semua tugas pengguna di `tasks_user.php`.
-4. Kelola kategori, status, dan prioritas tugas.
-5. Pantau statistik tugas dari halaman `dashboard.php`.
+   * Menambahkan pengguna baru
+   * Mengedit profil pengguna
+   * Menghapus akun pengguna
+3. Akses halaman **Tasks User** untuk melihat dan mengelola seluruh tugas pengguna.
+4. Kelola referensi kategori, prioritas, dan status tugas.
+5. Gunakan dashboard admin untuk melihat statistik jumlah tugas dan aktivitas user.
 
 ---
 
 ## 💡 Tips Penggunaan
 
-* Gunakan kategori seperti *Personal*, *Work*, atau *Health* untuk mengelompokkan tugas.
-* Admin dapat mengelola kelompok kategori tugas untuk user.
-* Tandai tugas selesai segera agar tidak menumpuk.
-* Gunakan fitur **Upcoming Deadlines** sebagai acuan pengingat harian.
+* Gunakan kategori seperti *Personal*, *Work*, atau *Health* untuk pengelompokan tugas yang lebih baik.
+* Admin dapat menyesuaikan jenis kategori, prioritas, dan status tugas agar sesuai dengan kebutuhan organisasi.
+* Tandai tugas yang sudah selesai untuk menjaga fokus pada pekerjaan berikutnya.
+* Rutin cek **Upcoming Deadlines** untuk menghindari keterlambatan.
 
 ---
 
@@ -136,3 +132,4 @@ Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentuk
 3. **Wildan Mukmin** – [GitHub](https://github.com/)
 
 ---
+
