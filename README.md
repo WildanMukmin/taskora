@@ -1,5 +1,4 @@
 ---
-```markdown
 # ✅ Taskora - Task Organizer
 
 ## 📝 Deskripsi Proyek
