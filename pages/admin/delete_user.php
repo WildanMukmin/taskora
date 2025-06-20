@@ -1,8 +1,8 @@
 <?php
 $title_page = 'Delete Users Account';
 session_start();
-include_once('../../includes/gate_admin.php'); 
-require_once('../../functions/users.php');
+require_once __DIR__ . '/../../includes/gate_admin.php'; 
+require_once __DIR__ . '/../../functions/users.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

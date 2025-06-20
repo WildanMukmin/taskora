@@ -1,5 +1,5 @@
 <?php
-include_once('../../functions/tasks.php');
+require_once __DIR__ . '/../../functions/tasks.php';
 $id = $_GET["id"];
 
 markDoneByid($id);

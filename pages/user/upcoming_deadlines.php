@@ -1,7 +1,7 @@
 <?php
 $title_page = 'Upcoming Deadline';
-include_once('../../includes/gate_user.php'); 
-include_once('../../includes/header.php');
+require_once __DIR__ . '/../../includes/gate_user.php'; 
+require_once __DIR__ . '/../../includes/header.php';
 ?>
 
 <div class="flex-grow p-4 md:p-6 bg-gray-50 min-h-screen">
@@ -59,4 +59,4 @@ include_once('../../includes/header.php');
 </div>
 
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

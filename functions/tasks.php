@@ -35,7 +35,7 @@ function getTasksById($id){
         JOIN users ON tasks.user_id = users.id
         LEFT JOIN categories ON tasks.category_id = categories.id
         WHERE tasks.user_id = $id
-        ORDER BY tasks.created_at DESC
+        ORDER BY tasks.status ASC, tasks.due_date ASC
     ";
 
     $result = $conn->query($sql);
@@ -125,7 +125,7 @@ function getTasksByStatusCategoryPriority(int $userId, string $status, string $c
         $types .= "s"; // s = string
     }
 
-    $sql .= " ORDER BY tasks.created_at DESC";
+    $sql .= " ORDER BY tasks.status ASC, tasks.due_date ASC";
 
     // Persiapan statement
     if ($stmt = $conn->prepare($sql)) {

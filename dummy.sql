@@ -1,0 +1,22 @@
+INSERT INTO tasks (user_id, category_id, title, description, priority, status, due_date)
+VALUES
+(2, 1, 'Write blog post', 'Finish the blog post about PHP and MySQL', 'medium', 'progress', '2025-07-01'),
+(2, 2, 'Team meeting', 'Discuss progress and next steps for the project', 'high', 'progress', '2025-06-22'),
+(2, 3, 'Code refactoring', 'Improve code readability and performance', 'low', 'progress', '2025-07-05'),
+(2, 4, 'Design new UI', 'Create wireframe for dashboard', 'medium', 'done', '2025-06-28'),
+(2, 5, 'Database backup', 'Schedule and verify daily backups', 'high', 'done', '2025-06-20'),
+(2, 1, 'Client follow-up', 'Send project updates and gather feedback', 'medium', 'progress', '2025-06-25'),
+(2, 2, 'Fix login bug', 'Resolve issue with login form validation', 'high', 'progress', '2025-06-21'),
+(2, 3, 'Write documentation', 'Add setup and usage instructions', 'low', 'done', '2025-07-10'),
+(2, 4, 'Deploy update', 'Push latest changes to production server', 'high', 'progress', '2025-06-26'),
+(2, 5, 'Create API test', 'Write tests for new endpoints', 'medium', 'progress', '2025-07-02'),
+(2, 1, 'Review PRs', 'Review and merge open pull requests', 'medium', 'done', '2025-06-19'),
+(2, 2, 'Data cleaning', 'Remove duplicates and clean invalid records', 'low', 'progress', '2025-06-30'),
+(2, 3, 'Add new feature', 'Implement export to CSV option', 'high', 'progress', '2025-07-04'),
+(2, 4, 'Update README', 'Add examples and badges', 'low', 'done', '2025-06-23'),
+(2, 5, 'Optimize queries', 'Improve database performance', 'medium', 'progress', '2025-06-27'),
+(2, 1, 'Prepare presentation', 'Create slides for stakeholder meeting', 'high', 'progress', '2025-06-24'),
+(2, 2, 'Bug testing', 'Run test cases for known bugs', 'medium', 'done', '2025-06-29'),
+(2, 3, 'Refactor routes', 'Simplify and clean route handlers', 'low', 'progress', '2025-07-06'),
+(2, 4, 'Analyze feedback', 'Go through client feedback report', 'medium', 'done', '2025-06-18'),
+(2, 5, 'Security audit', 'Review app for security vulnerabilities', 'high', 'progress', '2025-07-03');

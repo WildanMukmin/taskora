@@ -1,6 +1,6 @@
 <?php
 $title_page = 'Edit Task';
-include_once('../../functions/tasks.php');
+require_once __DIR__ . '/../../functions/tasks.php';
 
 $id = (int) $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: my_tasks.php');
     exit;
 }
-include_once('../../includes/gate_user.php'); 
-include_once('../../includes/header.php');
-include_once('../../functions/category.php');
+require_once __DIR__ . '/../../includes/gate_user.php'; 
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../functions/category.php';
 
 if (!isset($_GET['id'])){
     header('Location: my_tasks.php');
@@ -83,4 +83,4 @@ $categories = getCategories();
     </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

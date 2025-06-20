@@ -1,8 +1,8 @@
 <?php
 $title_page = 'Manage Users Account';
-include_once('../../includes/gate_admin.php'); 
-include_once('../../includes/header.php');
-include_once('../../functions/users.php');
+require_once __DIR__ . '/../../includes/gate_admin.php'; 
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../functions/users.php';
 $total_users = getTotalUsers();
 ?>
 
@@ -16,7 +16,7 @@ $total_users = getTotalUsers();
         <h1 class="text-xl font-bold text-blue-600">Manage Users</h1>
       </div>
       
-      <a href="/taskora/pages/admin/add_user.php"
+      <a href="/pages/admin/add_user.php"
         class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 shadow-sm hover:shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -97,4 +97,4 @@ $total_users = getTotalUsers();
   </div>
 </main>
 
-<?php include_once('../../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
