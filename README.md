@@ -51,7 +51,7 @@ Dengan Taskora, pengguna dapat menambahkan tugas, menetapkan prioritas, menentuk
 1. **Clone Repositori**
    ```bash
    git clone https://github.com/WildanMukmin/taskora.git
-````
+   ```
 
 2. **Masuk ke Folder Proyek**
 
